@@ -1,9 +1,9 @@
 import React from 'react';
-import imgHidro from '../assets/Categories/hidromasajes.png';
-import imgBanos from '../assets/Categories/banos.png';
-import imgLabores from '../assets/Categories/labores.png';
-import imgCocinas from '../assets/Categories/cocinas.png';
-import imgOutdoor from '../assets/Categories/outdoor.png';
+import imgHidro from '../assets/categories/hidromasajes.png';
+import imgBanos from '../assets/categories/banos.png';
+import imgLabores from '../assets/categories/labores.png';
+import imgCocinas from '../assets/categories/cocinas.png';
+import imgOutdoor from '../assets/categories/outdoor.png';
 
 const categories = [
   { name: "Hidromasajes", image: imgHidro, link: "#" },
