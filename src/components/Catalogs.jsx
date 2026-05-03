@@ -1,6 +1,6 @@
 import React from 'react';
 import imgHidro from '../assets/categories/hidromasajes.png';
-import imgBanos from '../assets/categories/baños.png';
+import imgBanos from '../assets/categories/banos.png';
 import imgLabores from '../assets/categories/labores.png';
 import imgCocinas from '../assets/categories/cocinas.png';
 import imgOutdoor from '../assets/categories/outdoor.png';
