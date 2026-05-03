@@ -7,7 +7,7 @@ const highlights = [
     title: "Nueva Línea AeroSpa 2026",
     description: "Ingeniería de flujo invertido para un relax profundo.",
     image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800",
-    size: "md:col-span-2 md:row-span-2" // Tarjeta grande
+    size: "md:col-span-2 md:row-span-2"
   },
   {
     id: 2,
@@ -29,11 +29,11 @@ const highlights = [
 
 export default function News() {
   return (
-    <section className="py-20 bg-white font-montserrat">
+    <section className="py-12 md:py-20 bg-white font-montserrat">
       <div className="container mx-auto px-4">
         
         {/* Cabecera Técnica */}
-        <div className="mb-12">
+        <div className="mb-10">
           <div className="flex items-center gap-3 mb-2">
             <div className="h-[2px] w-10 bg-fresh-accent"></div>
             <span className="text-fresh-accent text-[10px] font-black uppercase tracking-[4px]">
@@ -45,22 +45,26 @@ export default function News() {
           </h2>
         </div>
 
-        {/* Bento Grid de Novedades */}
+        {/* Bento Grid Corregido */}
+        {/* h-auto en móvil, h-[600px] en tablet/desktop */}
         <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
           {highlights.map((item) => (
             <div 
               key={item.id} 
-              className={`relative overflow-hidden group cursor-pointer border border-gray-100 ${item.size}`}
+              /* CAMBIO CLAVE: h-[300px] asegura que en celular la tarjeta 
+                 tenga altura física para mostrar el contenido absoluto.
+              */
+              className={`relative overflow-hidden group cursor-pointer border border-gray-100 min-h-[300px] md:min-h-0 ${item.size}`}
             >
-              {/* Imagen de fondo con Zoom */}
+              {/* Imagen de fondo */}
               <img 
                 src={item.image} 
                 alt={item.title} 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               
-              {/* Overlay gradiente para legibilidad */}
-              <div className="absolute inset-0 bg-gradient-to-t from-fresh-blue/90 via-fresh-blue/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-fresh-blue/90 via-fresh-blue/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
 
               {/* Contenido */}
               <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
@@ -70,12 +74,15 @@ export default function News() {
                 <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-tight leading-none mb-2">
                   {item.title}
                 </h3>
-                <p className="text-gray-300 text-xs md:text-sm max-w-xs opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                
+                {/* CAMBIO CLAVE: Opacidad 100 en móvil. 
+                   En celulares no hay "hover", así que el texto debe ser visible siempre.
+                */}
+                <p className="text-gray-300 text-xs md:text-sm max-w-xs opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 translate-y-0 md:translate-y-4 md:group-hover:translate-y-0">
                   {item.description}
                 </p>
                 
-                {/* Indicador de "Ver más" sutil */}
-                <div className="mt-4 h-[1px] w-0 bg-fresh-accent group-hover:w-full transition-all duration-700"></div>
+                <div className="mt-4 h-[1px] w-8 md:w-0 bg-fresh-accent md:group-hover:w-full transition-all duration-700"></div>
               </div>
             </div>
           ))}
