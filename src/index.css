@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- PALETA DE IDENTIDAD FRESH (Evolución Tech) --- */
+  
+  /* Midnight Tech: Un azul casi negro más profundo que el navy tradicional */
+  --color-fresh-blue: #080d12; 
+  /* Fresh Cyan: El color de la ingeniería, el agua y la tecnología */
+  --color-fresh-accent: #00d4ff; 
+  /* Dark Mode Pure */
+  --color-fresh-dark: #020202;
+  /* Grises de precisión */
+  --color-fresh-gray-deep: #1a1a1a;
+  --color-fresh-gray-muted: #7a7a7a;
+  
+  /* Colores de Referencia Corporativa (Legacy) */
+  --color-firplak-navy: #1c2b39;
+  --color-firplak-muted: #708d91;
+
+  /* --- TIPOGRAFÍAS --- */
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+
+  /* --- ANIMACIONES DE ALTO RENDIMIENTO --- */
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+}
+
+@layer base {
+  html { 
+    scroll-behavior: smooth; 
+    /* Offset crítico: evita que el Navbar tape los títulos al navegar */
+    scroll-padding-top: 100px; 
+  }
+
+  body {
+    background-color: white;
+    color: var(--color-fresh-blue);
+    font-family: var(--font-montserrat);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Personalización de la barra de scroll para look premium */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-fresh-blue);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-fresh-accent);
+  }
+
+  /* Mejora de la selección de texto con los colores de marca */
+  ::selection {
+    background-color: var(--color-fresh-accent);
+    color: var(--color-fresh-blue);
+  }
+}
+
+@layer utilities {
+  /* Utilitario para el Ticker de marcas o noticias */
+  .animate-marquee {
+    animation: var(--animate-marquee);
+  }
+
+  /* Efecto de cristal (Glassmorphism) optimizado */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Espaciado editorial para títulos de alta gama */
+  .tracking-fresh {
+    letter-spacing: 0.25em;
+  }
+
+  /* Divisor técnico extra delgado */
+  .border-thin {
+    border-width: 0.5px;
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sistema de revelación (Scroll Reveal) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Efecto de resplandor para botones tecnológicos */
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+  
+  .glow-accent:hover {
+    box-shadow: 0 0 35px rgba(0, 212, 255, 0.6);
+  }
+}
