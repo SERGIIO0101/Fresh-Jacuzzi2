@@ -15,32 +15,22 @@ const catalogs = [
 
 export default function Catalogs() {
   return (
-    <section className="py-16 md:py-24 bg-white font-montserrat">
-      {/* Título idéntico a tu referencia */}
+    <section className="py-16 md:py-24 bg-white font-montserrat overflow-hidden">
       <div className="text-center mb-12 px-4">
-        <h2 className="text-2xl md:text-3xl font-black text-[#1a1a1a] tracking-tight uppercase italic italic">
+        <h2 className="text-2xl md:text-3xl font-black text-[#1a1a1a] tracking-tight uppercase italic">
           Descarga nuestros catálogos
         </h2>
         <div className="w-16 h-[3px] bg-fresh-accent mx-auto mt-4"></div>
       </div>
 
-      {/* CONTENEDOR DE SCROLL: 
-        1. Quitamos 'container' para que el scroll llegue al borde de la pantalla.
-        2. Usamos 'pl-6' para que el primer item no aparezca pegado al borde izquierdo.
-        3. 'pr-20' asegura que el último item tenga aire al final.
-      */}
       <div className="flex flex-nowrap overflow-x-auto pb-10 pt-4 no-scrollbar snap-x snap-mandatory px-6 md:justify-center">
         {catalogs.map((item) => (
           <div 
             key={item.id} 
             className="flex-none w-[85vw] sm:w-[320px] md:w-[280px] mr-6 snap-center"
           >
-            {/* Marco Gris (Fiel a tu imagen) */}
             <div className={`${item.material} p-4 md:p-6 shadow-sm relative group`}>
-              
-              {/* Contenedor del Libro */}
               <div className="bg-white shadow-lg overflow-hidden flex flex-col">
-                {/* Imagen de Catálogo */}
                 <div className="aspect-[4/5] overflow-hidden">
                   <img 
                     src={item.image} 
@@ -48,29 +38,23 @@ export default function Catalogs() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-
-                {/* Branding Pie de Libro */}
                 <div className="p-4 bg-white text-center">
                   <p className="text-[10px] font-black tracking-[4px] text-[#000] uppercase">Fresh</p>
                   <p className="text-[7px] font-bold tracking-[2px] text-fresh-accent uppercase mt-1">Hidrojacuzz</p>
                 </div>
               </div>
 
-              {/* Botón de Descarga Flotante */}
               <button className="absolute -bottom-5 -right-2 md:bottom-10 md:-right-4 w-12 h-12 bg-fresh-accent text-white rounded-full shadow-xl flex items-center justify-center z-20 hover:scale-110 active:scale-95 transition-transform">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
               </button>
             </div>
-
-            {/* Título de la sección (Hidromasajes, etc) */}
             <h3 className="mt-8 text-center text-[14px] md:text-[16px] font-black text-black uppercase tracking-[3px]">
               {item.title}
             </h3>
           </div>
         ))}
-        {/* Espaciador final para que no corte el último item */}
         <div className="flex-none w-10"></div>
       </div>
 
